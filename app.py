@@ -23,8 +23,11 @@ def index():
 
         city = output['city']
         days = float(output['days'])
-        latitude = float(output['lat'])
-        longitude = float(output['long'])
+      
+        r = requests.get("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=d2f0f5194fc7dbce96a2303575bea5c5")
+        data = r.json()
+        lat = float(data[0]["lat"])
+        long = float(data[0]["long"])
 
         # data, _ = subprocess.Popen([sys.executable, "current.py", str(latitude) + "," + str(longitude)],
         #                            stdout=subprocess.PIPE).communicate()
@@ -32,11 +35,11 @@ def index():
         #
         # lati = {"lat" : lat,  "long": long}
         
-        lat = 30.3165
-        long = 78.0322
+#         lat = 30.3165
+#         long = 78.0322
         
-        lat = latitude
-        long = longitude
+#         lat = latitude
+#         long = longitude
 
         r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data = r.json()
