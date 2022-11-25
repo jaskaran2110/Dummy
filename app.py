@@ -31,8 +31,12 @@ def index():
         # data = {"city": city,  "days": days+100}
         #
         # lati = {"lat" : lat,  "long": long}
+        
         lat = 30.3165
         long = 78.0322
+        
+        lat = latitude
+        long = longitude
 
         r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data = r.json()
