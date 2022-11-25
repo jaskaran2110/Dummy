@@ -27,13 +27,13 @@ def index():
         r = requests.get("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=d2f0f5194fc7dbce96a2303575bea5c5")
         data = r.json()
         lat = float(data[0]["lat"])
-        long = float(data[0]["long"])
+        long = float(data[0]["lon"])
 
         # data, _ = subprocess.Popen([sys.executable, "current.py", str(latitude) + "," + str(longitude)],
         #                            stdout=subprocess.PIPE).communicate()
         # data = {"city": city,  "days": days+100}
         #
-        # lati = {"lat" : lat,  "long": long}
+        # lati = {"lat" : lat,  "long": lon}
         
 #         lat = 30.3165
 #         long = 78.0322
