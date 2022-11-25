@@ -40,8 +40,8 @@ def index():
         j = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location="+str(lat)+"%2C" +str(long) +"&radius=25000&type=point_of_interest&keyword=places&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data2 = j.json()
 
-        # t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
-        # data3 = t.json()
+        t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        data3 = t.json()
 
         # print(data)
         # jsonString = json.loads(data)
@@ -160,7 +160,7 @@ def index():
         # jsonString["data"][1].update({"allow": counter})
         # jsonString["data"][2].update({"allow": counter})
 
-        combined = {"hospital": jsonstring3, "hotel": jsonstring, "Places": jsonstring}
+        combined = {"hospital": jsonstring3, "hotel": jsonstring, "Places": jsonstring2}
 
         # print((jsonstring))
         # print(type(jsonstring2))
