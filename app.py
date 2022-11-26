@@ -42,13 +42,13 @@ def index():
 #         lat = latitude
 #         long = longitude
 
-        r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&minprice=0&maxprice="+str(budget)+"&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data = r.json()
 
-        j = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location="+str(lat)+"%2C" +str(long) +"&radius=25000&type=point_of_interest&minprice=0&maxprice="+str(budget)+"&keyword=places&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        j = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location="+str(lat)+"%2C" +str(long) +"&radius=25000&type=point_of_interest&keyword=places&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data2 = j.json()
 
-        t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&minprice=0&maxprice="+str(budget)+"&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data3 = t.json()
 
         # print(data)
