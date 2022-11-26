@@ -23,6 +23,7 @@ def index():
 
         city = output['city']
         days = float(output['days'])
+        budget = int(output['budget'])
       
         r = requests.get("https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=d2f0f5194fc7dbce96a2303575bea5c5")
         data = r.json()
@@ -41,13 +42,13 @@ def index():
 #         lat = latitude
 #         long = longitude
 
-        r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        r = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&minprice=0&maxprice="+str(budget)+"&type=lodging&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data = r.json()
 
-        j = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location="+str(lat)+"%2C" +str(long) +"&radius=25000&type=point_of_interest&keyword=places&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        j = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location="+str(lat)+"%2C" +str(long) +"&radius=25000&type=point_of_interest&minprice=0&maxprice="+str(budget)+"&keyword=places&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data2 = j.json()
 
-        t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
+        t = requests.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=hotels&location="+str(lat)+"%2C" +str(long) +"&radius=500&type=hospital&minprice=0&maxprice="+str(budget)+"&keyword=hospitalnearme&key=AIzaSyDxcBJYDXKP9cOK6F9LjAA3jbQYxMtfxwc")
         data3 = t.json()
 
         # print(data)
@@ -167,7 +168,7 @@ def index():
         # jsonString["data"][1].update({"allow": counter})
         # jsonString["data"][2].update({"allow": counter})
 
-        combined = {"hospital": jsonstring3, "hotel": jsonstring, "Places": jsonstring2}
+        combined = {"hospital": jsonstring3, "hotel": jsonstring, "Places": jsonstring2, "Budget":budget}
 
         # print((jsonstring))
         # print(type(jsonstring2))
